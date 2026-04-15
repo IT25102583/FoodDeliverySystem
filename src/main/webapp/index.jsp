@@ -13,8 +13,7 @@
         <div class="text-2xl font-bold tracking-tight">UberEats <span class="text-green-500">Partner</span></div>
         <div class="flex items-center space-x-4">
             <span class="text-sm font-medium">Welcome, ${restaurantName}</span>
-            <button class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded text-sm font-bold transition">Log Out</button>
-        </div>
+<a href="logoutRestaurant" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded text-sm font-bold transition">Log Out</a>        </div>
     </nav>
 
     <div class="flex min-h-screen">
