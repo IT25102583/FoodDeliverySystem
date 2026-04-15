@@ -7,16 +7,22 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import models.Restaurant;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.io.IOException;
 
-// This URL perfectly matches the 'action' in your signup.jsp form!
 @WebServlet("/registerRestaurant")
 public class RegisterServlet extends HttpServlet {
+
+    // Define exactly where the text file will be saved on your computer
+    // (You might need to create the 'FoodDeliveryData' folder on your C: drive first!)
+    private static final String FILE_PATH = "C:\\FoodDeliveryData\\restaurants.txt";
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        // 1. Capture the exact data typed into the HTML signup form
+        // 1. Capture the data
         String user = request.getParameter("username");
         String pass = request.getParameter("password");
         String id = request.getParameter("restaurantId");
@@ -24,19 +30,38 @@ public class RegisterServlet extends HttpServlet {
         String address = request.getParameter("address");
         String phone = request.getParameter("contactNumber");
 
-        // 2. Apply your OOP! Create a brand new Restaurant object.
-        // Note: We set the final boolean to 'false' because new restaurants should start out "closed"
+        // 2. Create the Object
         Restaurant newRestaurant = new Restaurant(user, pass, id, name, phone, address, false);
 
-        // 3. Print the object's data to the IntelliJ console to prove the data arrived safely
-        System.out.println("--- NEW RESTAURANT ACCOUNT CREATED ---");
-        System.out.println("Account Username: " + newRestaurant.getUsername());
-        System.out.println("Restaurant ID: " + newRestaurant.getRestaurantId());
-        System.out.println("Restaurant Name: " + newRestaurant.getRestaurantName());
-        System.out.println("Contact Number: " + newRestaurant.getContactNumber());
-        System.out.println("--------------------------------------");
+        // 3. Save to a Text File!
+        try {
+            // Make sure the directory exists
+            File file = new File(FILE_PATH);
+            file.getParentFile().mkdirs();
 
-        // 4. Send the user to the main dashboard after they register
+            // FileWriter with 'true' means it will APPEND to the file, not overwrite it
+            FileWriter fw = new FileWriter(file, true);
+            PrintWriter pw = new PrintWriter(fw);
+
+            // Write the data as a single line separated by commas (CSV style)
+            pw.println(newRestaurant.getUsername() + "," +
+                    newRestaurant.getPassword() + "," +
+                    newRestaurant.getRestaurantId() + "," +
+                    newRestaurant.getRestaurantName() + "," +
+                    newRestaurant.getContactNumber() + "," +
+                    newRestaurant.getAddress());
+
+            // Always close the writer to free up memory!
+            pw.close();
+
+            System.out.println("Success! Saved restaurant to: " + FILE_PATH);
+
+        } catch (IOException e) {
+            System.out.println("Error saving to file!");
+            e.printStackTrace();
+        }
+
+        // 4. Send them to the dashboard
         response.sendRedirect("index.jsp");
     }
 }
