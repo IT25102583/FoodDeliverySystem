@@ -22,8 +22,12 @@
                 <li><a href="#" class="block p-2 text-black bg-gray-100 rounded">Dashboard</a></li>
                 <li><a href="#" class="block p-2 hover:bg-gray-50 hover:text-black rounded">Edit Profile</a></li>
                 <li><a href="#" class="block p-2 hover:bg-gray-50 hover:text-black rounded">Menu Management</a></li>
-                <li><a href="#" class="block p-2 text-red-500 hover:bg-red-50 rounded mt-8">Delete Account</a></li>
-            </ul>
+                <li>
+                    <a href="deleteAccount" onclick="return confirm('Are you absolutely sure you want to permanently delete your restaurant? This cannot be undone.');" class="block p-2 text-red-500 hover:bg-red-50 hover:text-red-600 font-bold rounded mt-8 transition">
+                        Delete Account
+                    </a>
+                </li>
+                </ul>
         </aside>
 
         <main class="flex-1 p-8">
