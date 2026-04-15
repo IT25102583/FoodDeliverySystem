@@ -12,7 +12,7 @@
     <nav class="bg-black text-white p-4 shadow-md flex justify-between items-center">
         <div class="text-2xl font-bold tracking-tight">UberEats <span class="text-green-500">Partner</span></div>
         <div class="flex items-center space-x-4">
-            <span class="text-sm font-medium">Welcome, Sanjit's Kitchen</span>
+            <span class="text-sm font-medium">Welcome, ${restaurantName}</span>
             <button class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded text-sm font-bold transition">Log Out</button>
         </div>
     </nav>
@@ -40,28 +40,26 @@
             </div>
 
             <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 max-w-2xl">
-                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 max-w-2xl">
-                                <form action="updateRestaurant" method="POST">
-                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                                        <div>
-                                            <label class="block text-sm font-medium text-gray-700 mb-2">Restaurant Name</label>
-                                            <input type="text" name="restaurantName" value="Sanjit's Kitchen" class="w-full border border-gray-300 rounded-lg p-2.5 focus:ring-black focus:border-black" readonly>
-                                        </div>
-                                        <div>
-                                            <label class="block text-sm font-medium text-gray-700 mb-2">Contact Number</label>
-                                            <input type="text" name="contactNumber" value="+94 77 123 4567" class="w-full border border-gray-300 rounded-lg p-2.5 focus:ring-black focus:border-black">
-                                        </div>
-                                    </div>
-                                    <div class="mb-6">
-                                        <label class="block text-sm font-medium text-gray-700 mb-2">Restaurant Address</label>
-                                        <input type="text" name="restaurantAddress" value="123 Malabe Road, Colombo" class="w-full border border-gray-300 rounded-lg p-2.5 focus:ring-black focus:border-black">
-                                    </div>
+                <form action="updateRestaurant" method="POST">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Restaurant Name</label>
+                            <input type="text" name="restaurantName" value="${restaurantName}" class="w-full border border-gray-300 rounded-lg p-2.5 bg-gray-50 focus:outline-none" readonly>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Contact Number</label>
+                            <input type="text" name="contactNumber" value="${contactNumber}" class="w-full border border-gray-300 rounded-lg p-2.5 focus:ring-black focus:border-black">
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Restaurant Address</label>
+                        <input type="text" name="restaurantAddress" value="${restaurantAddress}" class="w-full border border-gray-300 rounded-lg p-2.5 focus:ring-black focus:border-black">
+                    </div>
 
-                                    <div class="flex justify-end">
-                                        <button type="submit" class="bg-black hover:bg-gray-800 text-white font-bold py-2 px-6 rounded-lg transition">Update Profile</button>
-                                    </div>
-                                </form>
-                            </div>
+                    <div class="flex justify-end">
+                        <button type="submit" class="bg-black hover:bg-gray-800 text-white font-bold py-2 px-6 rounded-lg transition">Update Profile</button>
+                    </div>
+                </form>
             </div>
         </main>
     </div>
