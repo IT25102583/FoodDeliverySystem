@@ -32,10 +32,14 @@
                     <h1 class="text-3xl font-bold text-gray-900">Restaurant Profile</h1>
                     <p class="text-gray-500 mt-1">Manage your details and restaurant status.</p>
                 </div>
-                <div class="flex items-center space-x-3 bg-white p-3 rounded-lg shadow-sm border border-gray-200">
-                    <span class="text-sm font-bold text-gray-700">Accepting Orders:</span>
-                    <span class="bg-green-100 text-green-800 text-xs font-bold px-3 py-1 rounded-full">OPEN</span>
-                </div>
+               <div class="flex items-center space-x-3 bg-white p-3 rounded-lg shadow-sm border border-gray-200">
+                   <span class="text-sm font-bold text-gray-700">Accepting Orders:</span>
+                   <form action="toggleStatus" method="POST" class="m-0">
+                       <button type="submit" class="${(empty restaurantStatus || restaurantStatus == 'CLOSED') ? 'bg-red-100 text-red-800' : 'bg-green-100 text-green-800'} text-xs font-bold px-4 py-1.5 rounded-full hover:opacity-80 transition cursor-pointer shadow-sm">
+                           ${(empty restaurantStatus || restaurantStatus == 'CLOSED') ? 'CLOSED' : 'OPEN'}
+                       </button>
+                   </form>
+               </div>
             </div>
 
             <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 max-w-2xl">
