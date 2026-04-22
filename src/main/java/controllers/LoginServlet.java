@@ -53,6 +53,7 @@ public class LoginServlet extends HttpServlet {
             System.out.println("--- LOGIN SUCCESSFUL for user: " + user + " ---");
 
             // --- NEW SESSION CODE ---
+
             // Create a VIP wristband (Session) and attach the specific restaurant's data to it
             HttpSession session = request.getSession();
             session.setAttribute("restaurantName", loggedInDetails[3]); // Index 3 is the Name

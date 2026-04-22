@@ -5,6 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession; // Don't forget this new import!
 import models.Restaurant;
 
 import java.io.File;
@@ -15,8 +16,6 @@ import java.io.IOException;
 @WebServlet("/registerRestaurant")
 public class RegisterServlet extends HttpServlet {
 
-    // Define exactly where the text file will be saved on your computer
-    // (You might need to create the 'FoodDeliveryData' folder on your C: drive first!)
     private static final String FILE_PATH = "C:\\FoodDeliveryData\\restaurants.txt";
 
     @Override
@@ -33,17 +32,14 @@ public class RegisterServlet extends HttpServlet {
         // 2. Create the Object
         Restaurant newRestaurant = new Restaurant(user, pass, id, name, phone, address, false);
 
-        // 3. Save to a Text File!
+        // 3. Save to a Text File
         try {
-            // Make sure the directory exists
             File file = new File(FILE_PATH);
             file.getParentFile().mkdirs();
 
-            // FileWriter with 'true' means it will APPEND to the file, not overwrite it
             FileWriter fw = new FileWriter(file, true);
             PrintWriter pw = new PrintWriter(fw);
 
-            // Write the data as a single line separated by commas (CSV style)
             pw.println(newRestaurant.getUsername() + "," +
                     newRestaurant.getPassword() + "," +
                     newRestaurant.getRestaurantId() + "," +
@@ -51,15 +47,21 @@ public class RegisterServlet extends HttpServlet {
                     newRestaurant.getContactNumber() + "," +
                     newRestaurant.getAddress());
 
-            // Always close the writer to free up memory!
             pw.close();
-
             System.out.println("Success! Saved restaurant to: " + FILE_PATH);
 
         } catch (IOException e) {
             System.out.println("Error saving to file!");
             e.printStackTrace();
         }
+
+        // --- THE FIX: Create the Session Wristband! ---
+        HttpSession session = request.getSession();
+        session.setAttribute("restaurantName", newRestaurant.getRestaurantName());
+        session.setAttribute("contactNumber", newRestaurant.getContactNumber());
+        session.setAttribute("restaurantAddress", newRestaurant.getAddress());
+        // We also set the default status so the Open/Closed button works immediately
+        session.setAttribute("restaurantStatus", "CLOSED");
 
         // 4. Send them to the dashboard
         response.sendRedirect("index.jsp");

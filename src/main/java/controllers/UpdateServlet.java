@@ -19,19 +19,18 @@ public class UpdateServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        // 1. Grab the session to ensure a user is actually logged in
         HttpSession session = request.getSession(false);
         if (session == null || session.getAttribute("restaurantName") == null) {
             response.sendRedirect("login.jsp");
             return;
         }
 
-        // 2. Capture the new data from the HTML form
-        String targetName = request.getParameter("restaurantName"); // The readonly name field
+        // 1. Capture the new data (Name comes from the hidden input!)
+        String targetName = request.getParameter("restaurantName");
+        String newPassword = request.getParameter("newPassword");
         String newPhone = request.getParameter("contactNumber");
         String newAddress = request.getParameter("restaurantAddress");
 
-        // 3. Read all current records into memory (an ArrayList)
         List<String> fileLines = new ArrayList<>();
 
         try {
@@ -40,32 +39,28 @@ public class UpdateServlet extends HttpServlet {
             String line;
 
             while ((line = br.readLine()) != null) {
-                // Split the row by commas to check the data
                 String[] details = line.split(",");
 
-                // Index 3 is the Restaurant Name. If it matches, we update this row!
+                // If we find the correct restaurant, update Password (Index 1), Phone (Index 4), and Address (Index 5)
                 if (details[3].equals(targetName)) {
-                    // Rebuild the CSV string with the original account info, but NEW phone and address
-                    line = details[0] + "," + details[1] + "," + details[2] + "," +
+                    line = details[0] + "," + newPassword + "," + details[2] + "," +
                             details[3] + "," + newPhone + "," + newAddress;
                 }
 
-                // Add the line (whether it was updated or left original) to our memory list
                 fileLines.add(line);
             }
             br.close();
 
-            // 4. Overwrite the file with our updated list!
-            // (The 'false' in FileWriter means "Overwrite everything", instead of append)
+            // Overwrite the file
             PrintWriter pw = new PrintWriter(new FileWriter(file, false));
             for (String finalLine : fileLines) {
                 pw.println(finalLine);
             }
             pw.close();
 
-            System.out.println("--- PROFILE UPDATED IN FILE FOR: " + targetName + " ---");
+            System.out.println("--- PROFILE AND PASSWORD UPDATED FOR: " + targetName + " ---");
 
-            // 5. CRITICAL: Update the Session Wristband so the UI changes immediately without re-logging in!
+            // Update session data
             session.setAttribute("contactNumber", newPhone);
             session.setAttribute("restaurantAddress", newAddress);
 
@@ -74,7 +69,6 @@ public class UpdateServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        // 6. Send them back to the dashboard to see their shiny new data
         response.sendRedirect("index.jsp");
     }
 }

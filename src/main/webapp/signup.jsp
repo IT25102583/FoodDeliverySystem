@@ -8,7 +8,12 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-50 flex items-center justify-center min-h-screen font-sans">
-
+<a href="home.jsp" class="absolute top-6 left-6 flex items-center text-gray-500 hover:text-black transition font-bold text-sm">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        Back to Home
+    </a>
     <div class="w-full max-w-xl bg-white rounded-2xl shadow-sm border border-gray-200 p-8 m-4">
 
         <div class="text-center mb-8">
@@ -60,7 +65,7 @@
         </form>
 
         <div class="mt-8 text-center text-sm text-gray-600">
-            Already have an account? <a href="#" class="text-green-600 hover:text-green-700 hover:underline font-bold">Log in here</a>
+            Already have an account? <a href="login.jsp" class="text-green-600 hover:text-green-700 hover:underline font-bold">Log in here</a>
         </div>
 
     </div>

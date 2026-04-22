@@ -48,25 +48,28 @@
 
             <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 max-w-2xl">
                 <form action="updateRestaurant" method="POST">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Restaurant Name</label>
-                            <input type="text" name="restaurantName" value="${restaurantName}" class="w-full border border-gray-300 rounded-lg p-2.5 bg-gray-50 focus:outline-none" readonly>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Contact Number</label>
-                            <input type="text" name="contactNumber" value="${contactNumber}" class="w-full border border-gray-300 rounded-lg p-2.5 focus:ring-black focus:border-black">
-                        </div>
-                    </div>
-                    <div class="mb-6">
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Restaurant Address</label>
-                        <input type="text" name="restaurantAddress" value="${restaurantAddress}" class="w-full border border-gray-300 rounded-lg p-2.5 focus:ring-black focus:border-black">
-                    </div>
 
-                    <div class="flex justify-end">
-                        <button type="submit" class="bg-black hover:bg-gray-800 text-white font-bold py-2 px-6 rounded-lg transition">Update Profile</button>
-                    </div>
-                </form>
+                                    <input type="hidden" name="restaurantName" value="${restaurantName}">
+
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-2">New Password</label>
+                                            <input type="password" name="newPassword" placeholder="Enter new password" class="w-full border border-gray-300 rounded-lg p-2.5 bg-white focus:ring-black focus:border-black" required>
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-2">Contact Number</label>
+                                            <input type="text" name="contactNumber" value="${contactNumber}" class="w-full border border-gray-300 rounded-lg p-2.5 focus:ring-black focus:border-black" required>
+                                        </div>
+                                    </div>
+                                    <div class="mb-6">
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">Restaurant Address</label>
+                                        <input type="text" name="restaurantAddress" value="${restaurantAddress}" class="w-full border border-gray-300 rounded-lg p-2.5 focus:ring-black focus:border-black" required>
+                                    </div>
+
+                                    <div class="flex justify-end">
+                                        <button type="submit" class="bg-black hover:bg-gray-800 text-white font-bold py-2 px-6 rounded-lg transition">Update Profile</button>
+                                    </div>
+                                </form>
             </div>
         </main>
     </div>
