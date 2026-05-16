@@ -32,8 +32,13 @@
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-1">Password</label>
-                        <input type="password" name="password" required class="w-full border border-gray-300 rounded-lg p-2.5 focus:ring-black focus:border-black outline-none transition">
-                    </div>
+                        <input type="password" name="password" required
+                               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                               title="Must contain at least 8 characters, including at least 1 number, 1 uppercase letter, and 1 lowercase letter."
+                               class="w-full border border-gray-300 rounded-lg p-3 focus:ring-black focus:border-black outline-none transition"
+                               placeholder="Enter your password">
+                               </div>
+
                 </div>
             </div>
 
@@ -54,8 +59,12 @@
                     </div>
                     <div class="md:col-span-2">
                         <label class="block text-sm font-medium text-gray-700 mb-1">Contact Number</label>
-                        <input type="text" name="contactNumber" required class="w-full border border-gray-300 rounded-lg p-2.5 focus:ring-black focus:border-black outline-none transition">
-                    </div>
+                       <input type="text" name="contactNumber" required
+                              pattern="^(\d{10})$"
+                              title="Phone number must be exactly 10 digits long with no spaces or dashes."
+                              class="w-full border border-gray-300 rounded-lg p-3 focus:ring-black focus:border-black outline-none transition"
+                              placeholder="Enter contact number">
+                              </div>
                 </div>
             </div>
 

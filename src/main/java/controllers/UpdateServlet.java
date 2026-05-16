@@ -9,7 +9,6 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.List;
 
 @WebServlet("/updateRestaurant")
 public class UpdateServlet extends HttpServlet {
@@ -25,13 +24,14 @@ public class UpdateServlet extends HttpServlet {
             return;
         }
 
-        // 1. Capture the new data (Name comes from the hidden input!)
-        String targetName = request.getParameter("restaurantName");
+        // 1. Capture the updated data from the form
+        String targetName  = request.getParameter("restaurantName");
         String newPassword = request.getParameter("newPassword");
-        String newPhone = request.getParameter("contactNumber");
-        String newAddress = request.getParameter("restaurantAddress");
+        String newPhone    = request.getParameter("contactNumber");
+        String newAddress  = request.getParameter("restaurantAddress");
 
-        List<String> fileLines = new ArrayList<>();
+        // Using ArrayList - as covered in the course
+        ArrayList<String> fileLines = new ArrayList<>();
 
         try {
             File file = new File(FILE_PATH);
@@ -41,27 +41,27 @@ public class UpdateServlet extends HttpServlet {
             while ((line = br.readLine()) != null) {
                 String[] details = line.split(",");
 
-                // If we find the correct restaurant, update Password (Index 1), Phone (Index 4), and Address (Index 5)
+                // Find the matching restaurant and update Password (1), Phone (4), Address (5)
                 if (details[3].equals(targetName)) {
-                    line = details[0] + "," + newPassword + "," + details[2] + "," +
-                            details[3] + "," + newPhone + "," + newAddress;
+                    line = details[0] + "," + newPassword + "," + details[2] + ","
+                         + details[3] + "," + newPhone + "," + newAddress + "," + details[6];
                 }
 
                 fileLines.add(line);
             }
             br.close();
 
-            // Overwrite the file
+            // Overwrite the file with updated data
             PrintWriter pw = new PrintWriter(new FileWriter(file, false));
             for (String finalLine : fileLines) {
                 pw.println(finalLine);
             }
             pw.close();
 
-            System.out.println("--- PROFILE AND PASSWORD UPDATED FOR: " + targetName + " ---");
+            System.out.println("--- PROFILE UPDATED FOR: " + targetName + " ---");
 
-            // Update session data
-            session.setAttribute("contactNumber", newPhone);
+            // Update the session so the UI reflects changes immediately
+            session.setAttribute("contactNumber",     newPhone);
             session.setAttribute("restaurantAddress", newAddress);
 
         } catch (IOException e) {

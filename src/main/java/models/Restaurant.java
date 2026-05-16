@@ -1,20 +1,23 @@
 package models;
 
+// Inheritance: Restaurant IS-A User. It inherits username and password from User.
 public class Restaurant extends User {
+
+    // Encapsulation: Private fields specific to a Restaurant
     private String restaurantId;
     private String restaurantName;
     private String contactNumber;
     private String address;
-    private boolean isOpen; // Added this to match the UberEats style
+    private boolean isOpen;
 
     // Default Constructor
     public Restaurant() {
         super(); // Calls the User default constructor
     }
 
-    // Parameterized Constructor using 'super' keyword
+    // Parameterized Constructor using the 'super' keyword
     public Restaurant(String username, String password, String restaurantId, String restaurantName, String contactNumber, String address, boolean isOpen) {
-        super(username, password); // Passes login info up to the User class
+        super(username, password); // Passes login credentials up to the User class
         this.restaurantId = restaurantId;
         this.restaurantName = restaurantName;
         this.contactNumber = contactNumber;
@@ -63,7 +66,16 @@ public class Restaurant extends User {
         this.isOpen = isOpen;
     }
 
-    // Helper method to write this object to a text file later (CSV format)
+    // Polymorphism: Overriding the abstract method from User.
+    // A Restaurant's role is "RESTAURANT".
+    @Override
+    public String getRole() {
+        return "RESTAURANT";
+    }
+
+    // Polymorphism: Overriding the abstract method from User.
+    // Defines exactly how a Restaurant object is written to the data file (CSV format).
+    @Override
     public String toFileFormat() {
         return getUsername() + "," + getPassword() + "," + restaurantId + "," + restaurantName + "," + contactNumber + "," + address + "," + isOpen;
     }

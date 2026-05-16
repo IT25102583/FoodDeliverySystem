@@ -54,12 +54,19 @@
                                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                                         <div>
                                             <label class="block text-sm font-medium text-gray-700 mb-2">New Password</label>
-                                            <input type="password" name="newPassword" placeholder="Enter new password" class="w-full border border-gray-300 rounded-lg p-2.5 bg-white focus:ring-black focus:border-black" required>
-                                        </div>
+                                           <input type="password" name="newPassword"
+                                                  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                                                  title="Must contain at least 8 characters, including at least 1 number, 1 uppercase letter, and 1 lowercase letter."
+                                                  placeholder="Enter new password"
+                                                  class="w-full border border-gray-300 rounded-lg p-2.5 bg-white focus:ring-black focus:border-black" required>
+                                                  </div>
                                         <div>
                                             <label class="block text-sm font-medium text-gray-700 mb-2">Contact Number</label>
-                                            <input type="text" name="contactNumber" value="${contactNumber}" class="w-full border border-gray-300 rounded-lg p-2.5 focus:ring-black focus:border-black" required>
-                                        </div>
+                                            <input type="text" name="contactNumber" value="${contactNumber}"
+                                                   pattern="^(\d{10})$"
+                                                   title="Phone number must be exactly 10 digits long with no spaces or dashes."
+                                                   class="w-full border border-gray-300 rounded-lg p-2.5 focus:ring-black focus:border-black" required>
+                                                    </div>
                                     </div>
                                     <div class="mb-6">
                                         <label class="block text-sm font-medium text-gray-700 mb-2">Restaurant Address</label>
