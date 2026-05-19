@@ -43,8 +43,8 @@ public class UpdateServlet extends HttpServlet {
 
                 // Find the matching restaurant and update Password (1), Phone (4), Address (5)
                 if (details[3].equals(targetName)) {
-                    line = details[0] + "," + newPassword + "," + details[2] + ","
-                         + details[3] + "," + newPhone + "," + newAddress + "," + details[6];
+
+                    line = details[0] + "," + newPassword + "," + details[2] + "," + details[3] + "," + newPhone + "," + newAddress;
                 }
 
                 fileLines.add(line);
@@ -69,6 +69,6 @@ public class UpdateServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        response.sendRedirect("index.jsp");
+        response.sendRedirect("editProfile.jsp");
     }
 }
