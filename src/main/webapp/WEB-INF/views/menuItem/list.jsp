@@ -37,6 +37,19 @@
     }
     .nav-add:hover { background: var(--accent2); }
     .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+    /* Our new Back Button styles */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--muted);
+            text-decoration: none;
+            font-size: .875rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            transition: color 0.15s;
+        }
+        .back-link:hover { color: var(--accent2); }
+        .back-link svg { width: 18px; height: 18px; margin-right: 6px; }
     .page-title { font-size: 1.75rem; font-weight: 700; margin-bottom: .25rem; }
     .page-title span { color: var(--accent2); }
     .item-count { color: var(--muted); font-size: .875rem; margin-bottom: 1.5rem; }
@@ -79,9 +92,18 @@
   <a href="${pageContext.request.contextPath}/menuItems?action=add" class="nav-add">+ Add Item</a>
 </nav>
 <div class="container">
+
   <c:if test="${not empty param.success}">
     <div class="flash">✓ ${param.success}</div>
   </c:if>
+
+  <a href="${pageContext.request.contextPath}/index.jsp" class="back-link">
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+      </svg>
+      Back to Dashboard
+  </a>
+
   <h1 class="page-title">Menu <span>Items</span></h1>
   <p class="item-count">
     <c:choose>
