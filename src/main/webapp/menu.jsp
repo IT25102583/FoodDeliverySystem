@@ -31,7 +31,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Menu | Food Delivery</title>
+    <title>Menu Management | PLURIBUS</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-50 font-sans min-h-screen">
@@ -39,7 +39,7 @@
 <%-- ── HEADER ──────────────────────────────────────────────────────────────── --%>
 <nav class="bg-black text-white p-4 shadow-md flex justify-between items-center sticky top-0 z-50">
     <div class="text-2xl font-bold tracking-tight">
-        UberEats <span class="text-green-500">Menu</span>
+        PLURIBUS <span class="text-green-500">Menu</span>
     </div>
     <div class="flex items-center space-x-4">
         <a href="<%= contextPath %>/cart"

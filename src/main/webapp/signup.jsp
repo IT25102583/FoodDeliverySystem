@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Partner Sign Up | Food Delivery System</title>
+    <title>Partner Sign Up | PLURIBUS</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-50 flex items-center justify-center min-h-screen font-sans">
@@ -17,7 +17,7 @@
     <div class="w-full max-w-xl bg-white rounded-2xl shadow-sm border border-gray-200 p-8 m-4">
 
         <div class="text-center mb-8">
-            <h1 class="text-3xl font-bold tracking-tight text-black">UberEats <span class="text-green-500">Partner</span></h1>
+            <h1 class="text-3xl font-bold tracking-tight text-black">PLURIBUS <span class="text-green-500">Partner</span></h1>
             <p class="text-gray-500 mt-2">Create your restaurant account to start accepting orders.</p>
         </div>
 

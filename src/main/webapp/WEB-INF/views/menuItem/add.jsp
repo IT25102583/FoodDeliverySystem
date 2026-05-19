@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Add Menu Item — FoodRush</title>
+  <title>Management — PLURIBUS</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
   <style>
@@ -51,7 +51,7 @@
 </head>
 <body>
 <nav>
-  <div class="brand">Food<span>Rush</span></div>
+  <div class="brand">PLURIBUS</div>
   <a href="${pageContext.request.contextPath}/menuItems" class="back-link">← Back to Menu Items</a>
 </nav>
 <div class="container">

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome | Food Delivery System</title>
+    <title>Welcome | PLURIBUS</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-50 flex items-center justify-center min-h-screen font-sans">
@@ -13,7 +13,7 @@
 
         <div class="text-center mb-16">
             <h1 class="text-5xl font-extrabold tracking-tight text-black mb-4">
-                Welcome to <span class="text-green-500">UberEats</span>
+                Welcome to <span class="text-green-500">PLURIBUS</span>
             </h1>
             <p class="text-xl text-gray-500">How would you like to use our platform today?</p>
         </div>
