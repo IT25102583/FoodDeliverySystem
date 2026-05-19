@@ -21,7 +21,11 @@
             <p class="text-gray-500 mt-2">Welcome back! Please log in to your account.</p>
         </div>
 
-        <form action="loginRestaurant" method="POST" class="space-y-6">
+<div id="errorBox" class="hidden bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-lg mb-6 text-sm text-center font-bold">
+            Invalid username or password. Please try again.
+        </div>
+
+       <form action="loginRestaurant" method="POST" class="space-y-6" onsubmit="sessionStorage.setItem('loginAttempt', 'true');">
 
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">Username</label>
@@ -44,5 +48,18 @@
         </div>
 
     </div>
+
+    <script>
+            // When the page loads, check if they just tried to log in
+            if (sessionStorage.getItem('loginAttempt') === 'true') {
+
+                // Un-hide the error box by removing the 'hidden' class
+                document.getElementById('errorBox').classList.remove('hidden');
+
+                // Rip up the secret note so the error disappears if they refresh the page!
+                sessionStorage.removeItem('loginAttempt');
+            }
+        </script>
+
 </body>
 </html>
